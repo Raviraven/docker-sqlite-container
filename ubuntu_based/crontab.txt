@@ -1,2 +1,1 @@
-* * * * * /database/script.sh >> /var/log/script.log
 * * * * * /script.sh >> /var/log/script.log

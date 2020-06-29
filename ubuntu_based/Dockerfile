@@ -5,10 +5,16 @@ RUN apt-get -y install python
 RUN apt-get -y install cron
 
 RUN mkdir /database
+RUN mkdir /scripts
 
-ADD crontab.txt /crontab.txt
-ADD script.sh /script.sh
-COPY entry.sh /entry.sh
-RUN chmod 755 /script.sh /entry.sh
-RUN crontab /crontab.txt
+ADD crontab.txt /scripts/crontab.txt
+ADD script.sh /scripts/script.sh
+COPY entry.sh /scripts/entry.sh
+
+# copying python backup scripts
+COPY /python_scripts/backup.py /scripts/backup.py
+COPY /python_scripts/restore.py /scripts/restore.py
+
+RUN chmod 755 /scripts/script.sh /scripts/entry.sh
+RUN crontab /scripts/crontab.txt
 ENTRYPOINT [ "cron", "-f" ]
