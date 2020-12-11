@@ -1,5 +1,4 @@
-# Sqlite3 docker container with backup scripts written in python
-
+# Sqlite3 docker container 
 Ubuntu based docker image with necessary tools for storing and backing up data.
 
 ## Components
